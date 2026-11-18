@@ -2,7 +2,7 @@ name: Generate Contribution Snake
 
 on:
   schedule:
-    # Run daily at midnight UTC
+    # Run once daily at midnight UTC
     - cron: "0 0 * * *"
   workflow_dispatch:
   push:
@@ -18,13 +18,13 @@ jobs:
     timeout-minutes: 10
 
     steps:
-      - name: Generate Cyberpunk Neon Snake SVGs
+      - name: Generate Snake SVGs (Custom Modern Theme)
         uses: Platane/snk/svg-only@v3
         with:
           github_user_name: ${{ github.repository_owner }}
           outputs: |
-            dist/github-contribution-grid-snake.svg?color_snake=#0077b6&color_dots=#ebedf0,#90e0ef,#00b4d8,#0077b6,#03045e
-            dist/github-contribution-grid-snake-dark.svg?palette=github-dark&color_snake=#00f0ff&color_dots=#0d1424,#0e3a5a,#0077b6,#00b4d8,#00f0ff
+            dist/github-contribution-grid-snake.svg?color_snake=#2563eb&color_dots=#ebedf0,#bfdbfe,#60a5fa,#2563eb,#1d4ed8
+            dist/github-contribution-grid-snake-dark.svg?palette=github-dark&color_snake=#60a5fa&color_dots=#161b22,#1e3a8a,#2563eb,#3b82f6,#93c5fd
 
       - name: Deploy SVGs to output branch
         uses: crazy-max/ghaction-github-pages@v4

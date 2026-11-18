@@ -1,157 +1,139 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 160" width="100%" height="160" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 135" width="100%" height="135" fill="none">
   <defs>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&amp;display=swap');
-
       :root {
-        --bg-void: #070913;
-        --grid-line: rgba(0, 240, 255, 0.05);
-        --neon-cyan: #00f0ff;
-        --neon-pink: #ff0055;
-        --neon-purple: #9d4edd;
-        --text-main: #f8fafc;
-        --text-dim: #64748b;
-        --hud-border: #1e293b;
+        --bg: #ffffff;
+        --border: #e2e8f0;
+        --title: #0f172a;
+        --sub: #64748b;
+        --accent: #2563eb;
+        --accent-light: #60a5fa;
+        --accent-glow: rgba(37, 99, 235, 0.15);
+        --pill-bg: #f8fafc;
+        --pill-border: #cbd5e1;
       }
 
-      .hud-card {
-        fill: #060913;
-        stroke: #1e293b;
-        stroke-width: 1.5;
-        rx: 8px;
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0d1117;
+          --border: #21262d;
+          --title: #f0f6fc;
+          --sub: #8b949e;
+          --accent: #3b82f6;
+          --accent-light: #93c5fd;
+          --accent-glow: rgba(59, 130, 246, 0.18);
+          --pill-bg: #161b22;
+          --pill-border: #30363d;
+        }
       }
 
-      .grid-pattern {
-        stroke: var(--grid-line);
-        stroke-width: 0.75;
+      .card-bg {
+        fill: var(--bg);
+        stroke: var(--border);
+        stroke-width: 1;
+        rx: 10px;
       }
 
-      .text-glitch {
-        font-family: 'JetBrains Mono', monospace, -apple-system, sans-serif;
-        font-size: 27px;
-        font-weight: 800;
-        fill: #ffffff;
-        letter-spacing: 2px;
+      .text-title {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+        font-size: 25px;
+        font-weight: 700;
+        fill: var(--title);
+        letter-spacing: -0.6px;
       }
 
       .text-sub {
-        font-family: 'JetBrains Mono', monospace, -apple-system, sans-serif;
-        font-size: 12px;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+        font-size: 13.5px;
+        font-weight: 400;
+        fill: var(--sub);
+        letter-spacing: -0.15px;
+      }
+
+      .status-pill {
+        fill: var(--pill-bg);
+        stroke: var(--pill-border);
+        stroke-width: 1;
+        rx: 13px;
+      }
+
+      .status-label {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+        font-size: 11px;
         font-weight: 500;
-        fill: #00f0ff;
-        letter-spacing: 1.5px;
+        fill: var(--sub);
       }
 
-      .text-hud {
-        font-family: 'JetBrains Mono', monospace, -apple-system, sans-serif;
-        font-size: 10px;
-        font-weight: 700;
-        fill: #94a3b8;
-        letter-spacing: 1px;
-      }
-
-      .corner-bracket {
-        stroke: #00f0ff;
-        stroke-width: 2.5;
-        stroke-linecap: square;
-      }
-
-      /* Animated Neon Border Runner */
-      .laser-tracer {
-        stroke: url(#neon-tracer-grad);
-        stroke-width: 2;
-        stroke-linecap: round;
-        stroke-dasharray: 120 700;
-        animation: traceBorder 5s linear infinite;
-      }
-
-      @keyframes traceBorder {
-        0% { stroke-dashoffset: 820; }
-        100% { stroke-dashoffset: -820; }
-      }
-
-      /* Pulsing Radar Dot */
-      .status-pulse {
-        animation: radarPing 2.2s cubic-bezier(0, 0, 0.2, 1) infinite;
+      /* Smooth Pulsing Status Dot */
+      .ping-wave {
+        animation: radarPing 2.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+        transform-origin: 17px 13px;
       }
 
       @keyframes radarPing {
-        0% { r: 3.5; opacity: 1; stroke: #00f0ff; stroke-width: 1; fill: none; }
-        60%, 100% { r: 10; opacity: 0; stroke: #00f0ff; stroke-width: 0.5; fill: none; }
+        0% { r: 3.5; opacity: 0.8; stroke-width: 1; stroke: var(--accent); fill: none; }
+        50%, 100% { r: 9; opacity: 0; stroke-width: 0.5; stroke: var(--accent-light); fill: none; }
       }
 
-      /* Ambient Glow Line */
-      .glow-line {
-        stroke: url(#cyan-glow);
+      .dot-core {
+        fill: var(--accent);
+      }
+
+      /* Flowing Laser Underline Animation */
+      .laser-track {
+        stroke: var(--border);
         stroke-width: 1.5;
+        stroke-linecap: round;
+      }
+
+      .laser-beam {
+        stroke: url(#laser-grad);
+        stroke-width: 2.5;
+        stroke-linecap: round;
+        stroke-dasharray: 180 620;
+        animation: flowBeam 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+      }
+
+      @keyframes flowBeam {
+        0% { stroke-dashoffset: 800; }
+        100% { stroke-dashoffset: -800; }
       }
     </style>
 
-    <!-- Neon Tracer Gradient -->
-    <linearGradient id="neon-tracer-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0" />
-      <stop offset="50%" stop-color="#00f0ff" stop-opacity="1" />
-      <stop offset="75%" stop-color="#ff0055" stop-opacity="1" />
-      <stop offset="100%" stop-color="#9d4edd" stop-opacity="0" />
+    <!-- Animated Smooth Laser Beam Gradient -->
+    <linearGradient id="laser-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0" />
+      <stop offset="50%" stop-color="#60a5fa" stop-opacity="1" />
+      <stop offset="70%" stop-color="#93c5fd" stop-opacity="1" />
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0" />
     </linearGradient>
 
-    <!-- Cyan Glow Gradient -->
-    <linearGradient id="cyan-glow" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.8" />
-      <stop offset="50%" stop-color="#ff0055" stop-opacity="0.5" />
-      <stop offset="100%" stop-color="#00f0ff" stop-opacity="0" />
-    </linearGradient>
-
-    <!-- Background Matrix Grid Pattern -->
-    <pattern id="matrix-grid" width="20" height="20" patternUnits="userSpaceOnUse">
-      <path d="M 20 0 L 0 0 0 20" fill="none" class="grid-pattern" />
-    </pattern>
+    <!-- Subtle Corner Accent Gradient -->
+    <radialGradient id="corner-glow" cx="0%" cy="0%" r="50%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.12" />
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0" />
+    </radialGradient>
   </defs>
 
-  <!-- Background with Matrix Grid -->
-  <rect x="1" y="1" width="848" height="158" class="hud-card" />
-  <rect x="2" y="2" width="846" height="156" rx="8" fill="url(#matrix-grid)" />
+  <!-- Base Card -->
+  <rect x="0.5" y="0.5" width="799" height="134" class="card-bg" />
+  
+  <!-- Corner Glow for smooth depth -->
+  <rect x="1" y="1" width="300" height="133" rx="10" fill="url(#corner-glow)" />
 
-  <!-- Animated Neon Perimeter Tracer -->
-  <rect x="1" y="1" width="848" height="158" rx="8" fill="none" class="laser-tracer" />
+  <!-- Typography -->
+  <text x="32" y="52" class="text-title">Aditya Chaudhary</text>
+  <text x="32" y="85" class="text-sub">Software Developer · Systems Programming &amp; Local-First AI</text>
 
-  <!-- Cyberpunk Corner HUD Brackets -->
-  <!-- Top Left -->
-  <path d="M 12 28 L 12 12 L 28 12" class="corner-bracket" fill="none" />
-  <!-- Top Right -->
-  <path d="M 822 12 L 838 12 L 838 28" class="corner-bracket" fill="none" />
-  <!-- Bottom Left -->
-  <path d="M 12 132 L 12 148 L 28 148" class="corner-bracket" fill="none" />
-  <!-- Bottom Right -->
-  <path d="M 822 148 L 838 148 L 838 132" class="corner-bracket" fill="none" />
-
-  <!-- Top System Telemetry Bar -->
-  <g transform="translate(36, 30)">
-    <text x="0" y="0" class="text-hud">// SYS.ID: ADITYA_5412</text>
-    <text x="180" y="0" class="text-hud">LOC: IN_DELHI</text>
-    <text x="310" y="0" class="text-hud">SYS: ONLINE [144 FPS]</text>
+  <!-- Interactive Status Badge with Radar Ping -->
+  <g transform="translate(626, 35)">
+    <rect width="142" height="26" class="status-pill" />
+    <circle cx="17" cy="13" r="3.5" class="dot-core" />
+    <circle cx="17" cy="13" r="3.5" class="ping-wave" />
+    <text x="31" y="16.5" class="status-label">Active &amp; Exploring</text>
   </g>
 
-  <!-- Title & Callout -->
-  <g transform="translate(36, 75)">
-    <text x="0" y="0" class="text-glitch">ADITYA CHAUDHARY</text>
-    <text x="0" y="28" class="text-sub">> FULL-STACK DEVELOPER // SYSTEMS &amp; AI ENGINEER</text>
-  </g>
-
-  <!-- Gamer HUD Status Pill -->
-  <g transform="translate(640, 52)">
-    <rect width="170" height="34" rx="4" fill="#0d1424" stroke="#00f0ff" stroke-width="1.2" />
-    <circle cx="20" cy="17" r="4" fill="#00f0ff" />
-    <circle cx="20" cy="17" r="4" class="status-pulse" />
-    <text x="34" y="21" class="text-hud" fill="#ffffff">RANK: LEVEL 20</text>
-  </g>
-
-  <!-- Bottom Glowing Divider Line -->
-  <line x1="36" y1="124" x2="814" y2="124" class="glow-line" />
-
-  <!-- Crosshair Accents -->
-  <g transform="translate(814, 124)" stroke="#ff0055" stroke-width="1">
-    <line x1="-5" y1="0" x2="5" y2="0" />
-    <line x1="0" y1="-5" x2="0" y2="5" />
-  </g>
+  <!-- Smooth Laser Underline -->
+  <line x1="20" y1="133.5" x2="780" y2="133.5" class="laser-track" />
+  <line x1="20" y1="133.5" x2="780" y2="133.5" class="laser-beam" />
 </svg>
