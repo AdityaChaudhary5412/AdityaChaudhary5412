@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 135" width="100%" height="135" fill="none">
+  <defs>
+    <style>
+      :root {
+        --bg: #ffffff;
+        --border: #e2e8f0;
+        --title: #0f172a;
+        --sub: #64748b;
+        --accent: #2563eb;
+        --accent-light: #60a5fa;
+        --accent-glow: rgba(37, 99, 235, 0.15);
+        --pill-bg: #f8fafc;
+        --pill-border: #cbd5e1;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0d1117;
+          --border: #21262d;
+          --title: #f0f6fc;
+          --sub: #8b949e;
+          --accent: #3b82f6;
+          --accent-light: #93c5fd;
+          --accent-glow: rgba(59, 130, 246, 0.18);
+          --pill-bg: #161b22;
+          --pill-border: #30363d;
+        }
+      }
+
+      .card-bg {
+        fill: var(--bg);
+        stroke: var(--border);
+        stroke-width: 1;
+        rx: 10px;
+      }
+
+      .text-title {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+        font-size: 25px;
+        font-weight: 700;
+        fill: var(--title);
+        letter-spacing: -0.6px;
+      }
+
+      .text-sub {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+        font-size: 13.5px;
+        font-weight: 400;
+        fill: var(--sub);
+        letter-spacing: -0.15px;
+      }
+
+      .status-pill {
+        fill: var(--pill-bg);
+        stroke: var(--pill-border);
+        stroke-width: 1;
+        rx: 13px;
+      }
+
+      .status-label {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+        font-size: 11px;
+        font-weight: 500;
+        fill: var(--sub);
+      }
+
+      /* Smooth Pulsing Status Dot */
+      .ping-wave {
+        animation: radarPing 2.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+        transform-origin: 17px 13px;
+      }
+
+      @keyframes radarPing {
+        0% { r: 3.5; opacity: 0.8; stroke-width: 1; stroke: var(--accent); fill: none; }
+        50%, 100% { r: 9; opacity: 0; stroke-width: 0.5; stroke: var(--accent-light); fill: none; }
+      }
+
+      .dot-core {
+        fill: var(--accent);
+      }
+
+      /* Flowing Laser Underline Animation */
+      .laser-track {
+        stroke: var(--border);
+        stroke-width: 1.5;
+        stroke-linecap: round;
+      }
+
+      .laser-beam {
+        stroke: url(#laser-grad);
+        stroke-width: 2.5;
+        stroke-linecap: round;
+        stroke-dasharray: 180 620;
+        animation: flowBeam 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+      }
+
+      @keyframes flowBeam {
+        0% { stroke-dashoffset: 800; }
+        100% { stroke-dashoffset: -800; }
+      }
+    </style>
+
+    <!-- Animated Smooth Laser Beam Gradient -->
+    <linearGradient id="laser-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0" />
+      <stop offset="50%" stop-color="#60a5fa" stop-opacity="1" />
+      <stop offset="70%" stop-color="#93c5fd" stop-opacity="1" />
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- Subtle Corner Accent Gradient -->
+    <radialGradient id="corner-glow" cx="0%" cy="0%" r="50%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.12" />
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Base Card -->
+  <rect x="0.5" y="0.5" width="799" height="134" class="card-bg" />
+  
+  <!-- Corner Glow for smooth depth -->
+  <rect x="1" y="1" width="300" height="133" rx="10" fill="url(#corner-glow)" />
+
+  <!-- Typography -->
+  <text x="32" y="52" class="text-title">Aditya Chaudhary</text>
+  <text x="32" y="85" class="text-sub">Software Developer · Systems Programming &amp; Local-First AI</text>
+
+  <!-- Interactive Status Badge with Radar Ping -->
+  <g transform="translate(626, 35)">
+    <rect width="142" height="26" class="status-pill" />
+    <circle cx="17" cy="13" r="3.5" class="dot-core" />
+    <circle cx="17" cy="13" r="3.5" class="ping-wave" />
+    <text x="31" y="16.5" class="status-label">Active &amp; Exploring</text>
+  </g>
+
+  <!-- Smooth Laser Underline -->
+  <line x1="20" y1="133.5" x2="780" y2="133.5" class="laser-track" />
+  <line x1="20" y1="133.5" x2="780" y2="133.5" class="laser-beam" />
+</svg>
