@@ -65,4 +65,4 @@ Computer Science undergraduate based in India, specializing in C++ systems progr
 
 ### Connect
 
-[LinkedIn](https://www.linkedin.com/in/aditya-chaudhary-a80580427/) · [Email](mailto:adityachaudhary5412@gmail.com) · [Portfolio](https://github.com/AdityaChaudhary5412) · [X (Twitter)](https://x.com/AdityaChau12998)
+[LinkedIn](https://www.linkedin.com/in/aditya-chaudhary-a80580427/) · [Email](mailto:aditya8.jpr@gmail.com) · [Portfolio](https://github.com/AdityaChaudhary5412) · [X (Twitter)](https://x.com/AdityaChau12998)
